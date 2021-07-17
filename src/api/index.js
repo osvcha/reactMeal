@@ -10,3 +10,8 @@ export const getCategories = () => {
   const url = '/categories.php';
   return aInstance.get(url);
 };
+
+export const getMeals = params => {
+  const url = '/filter.php';
+  return aInstance.get(url, {params: params});
+};

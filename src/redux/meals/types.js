@@ -1,0 +1,3 @@
+export const UPDATE_MEALS_LIST = '@meals/UPDATE_MEALS_LIST';
+export const UPDATE_MEALS_LOADING = '@meals/UPDATE_MEALS_LOADING';
+export const UPDATE_MEALS_ITEM = '@meals/UPDATE_MEALS_ITEM';

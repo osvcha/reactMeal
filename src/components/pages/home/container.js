@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {Actions} from 'react-native-router-flux';
 import * as categoriesctions from '../../../redux/categories/actions';
 import HomeView from './view';
 
@@ -24,6 +25,7 @@ const Home = () => {
   const onCategoryPress = useCallback(
     category => {
       setItem(category);
+      Actions.push('Meals', {title: category?.strCategory || ''});
     },
     [setItem],
   );
