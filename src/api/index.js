@@ -15,3 +15,8 @@ export const getMeals = params => {
   const url = '/filter.php';
   return aInstance.get(url, {params: params});
 };
+
+export const getMeal = params => {
+  const url = '/lookup.php';
+  return aInstance.get(url, {params: params});
+};

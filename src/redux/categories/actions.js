@@ -29,12 +29,11 @@ export const setItem = item => {
 export const getList = () => {
   return async (dispatch, getState) => {
     try {
+      dispatch(setList([]));
       dispatch(setLoading(true));
       const getCategoriesResult = await api.getCategories();
       const list = getCategoriesResult.data?.categories || [];
-
-      const actionGenerated = setList(list);
-      dispatch(actionGenerated);
+      dispatch(setList(list));
     } catch (e) {
       Alert.alert(
         'Error',

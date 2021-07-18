@@ -1,7 +1,8 @@
 import React, {useCallback, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import MealsView from './view';
+import {Actions} from 'react-native-router-flux';
 import * as mealsActions from '../../../redux/meals/actions';
+import MealsView from './view';
 
 const Meals = () => {
   const dispatch = useDispatch();
@@ -14,15 +15,21 @@ const Meals = () => {
     [dispatch],
   );
 
+  const setItem = useCallback(
+    value => dispatch(mealsActions.setItem(value)),
+    [dispatch],
+  );
+
   useEffect(() => {
     initList();
   }, [initList]);
 
-  const setMeal = useCallback(
+  const onMealPressed = useCallback(
     meal => {
-      dispatch(mealsActions.setItem(meal));
+      setItem(meal);
+      Actions.push('Meal', {title: 'Recipe'});
     },
-    [dispatch],
+    [setItem],
   );
 
   return (
@@ -30,7 +37,7 @@ const Meals = () => {
       loading={loading}
       list={list}
       initList={initList}
-      setMeal={setMeal}
+      onMealPressed={onMealPressed}
     />
   );
 };

@@ -28,7 +28,6 @@ export const getMealsByCategory = () => {
       if (!category) {
         return;
       }
-
       dispatch(setList([]));
       dispatch(setLoading(true));
       const params = {c: category?.strCategory};

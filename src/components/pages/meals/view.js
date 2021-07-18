@@ -3,7 +3,7 @@ import {SafeAreaView, FlatList, RefreshControl, StatusBar} from 'react-native';
 import MealCard from '../../moleculas/card-meal';
 import styles, {loadingColor} from './styles';
 
-const MealsComponent = ({loading, list, initList, setMeal}) => {
+const MealsComponent = ({loading, list, initList, onMealPressed}) => {
   return (
     <>
       <StatusBar barStyle={'light-content'} />
@@ -19,7 +19,9 @@ const MealsComponent = ({loading, list, initList, setMeal}) => {
               tintColor={loadingColor}
             />
           }
-          renderItem={({item}) => <MealCard meal={item} onPress={setMeal} />}
+          renderItem={({item}) => (
+            <MealCard meal={item} onPress={meal => onMealPressed(meal)} />
+          )}
         />
       </SafeAreaView>
     </>

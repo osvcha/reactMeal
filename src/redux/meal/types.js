@@ -1,0 +1,2 @@
+export const UPDATE_MEAL_LOADING = '@meal/UPDATE_MEAL_LOADING';
+export const UPDATE_MEAL_ITEM = '@meal/UPDATE_MEAL_ITEM';
