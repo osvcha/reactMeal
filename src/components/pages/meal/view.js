@@ -14,25 +14,8 @@ import styles from './styles';
 
 const win = Dimensions.get('window');
 const ratio = win.width / 700;
-var ingredients = [];
 
-const MealComponent = ({loading, item}) => {
-  const updateIngredients = () => {
-    ingredients = [];
-
-    for (let i = 1; i <= 20; i++) {
-      const ingredient = item?.['strIngredient' + i];
-      const quantity = item?.['strMeasure' + i];
-      if (ingredient !== '' && ingredient !== null) {
-        ingredients.push({
-          name: ingredient,
-          quantity: quantity,
-        });
-      }
-    }
-  };
-  updateIngredients();
-
+const MealComponent = ({loading, mealData}) => {
   return (
     <>
       <StatusBar barStyle={'light-content'} />
@@ -43,12 +26,11 @@ const MealComponent = ({loading, item}) => {
           <ScrollView>
             <Image
               style={[styles.image, {height: 700 * ratio}]}
-              source={{uri: item?.strMealThumb}}
+              source={{uri: mealData?.image || ''}}
             />
-            <Text style={styles.mealTitle}>{item?.strMeal}</Text>
-
+            <Text style={styles.mealTitle}>{mealData?.name}</Text>
             <View style={styles.listIngredients}>
-              {ingredients.map((ingredient, index) => (
+              {mealData?.ingredients.map((ingredient, index) => (
                 <View style={styles.row}>
                   <View style={styles.bullet}>
                     <Text>{'\u2022' + ' '}</Text>
@@ -62,7 +44,9 @@ const MealComponent = ({loading, item}) => {
                 </View>
               ))}
             </View>
-            <Text style={styles.mealInstructions}>{item?.strInstructions}</Text>
+            <Text style={styles.mealInstructions}>
+              {mealData?.instructions}
+            </Text>
           </ScrollView>
         )}
       </SafeAreaView>

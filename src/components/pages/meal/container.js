@@ -6,7 +6,7 @@ import MealView from './view';
 const Meal = () => {
   const dispatch = useDispatch();
 
-  const item = useSelector(state => state.meal.item);
+  const mealData = useSelector(state => state.meal.mealData);
   const loading = useSelector(state => state.meal.loading);
 
   const initContent = useCallback(
@@ -19,7 +19,7 @@ const Meal = () => {
   }, [initContent]);
 
   return (
-    <MealView loading={loading} item={item?.[0]} initContent={initContent} />
+    <MealView loading={loading} mealData={mealData} initContent={initContent} />
   );
 };
 

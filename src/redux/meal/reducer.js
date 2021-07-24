@@ -1,14 +1,17 @@
 import * as types from './types';
 
 export const initialState = {
-  item: null,
+  mealData: null,
   loading: false,
 };
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case types.UPDATE_MEAL_ITEM:
-      return {...state, item: action.payload?.item};
+      return {
+        ...state,
+        mealData: action.payload?.mealData,
+      };
 
     case types.UPDATE_MEAL_LOADING:
       return {
