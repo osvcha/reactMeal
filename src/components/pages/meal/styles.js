@@ -11,17 +11,45 @@ const styles = StyleSheet.create({
     height: undefined,
     resizeMode: 'cover',
   },
-  row: {flexDirection: 'row', paddingVertical: 20, paddingHorizontal: 20},
-  label: {fontSize: 18, color: colors.white},
-  value: {
-    fontSize: 18,
-    color: colors.white,
+  mealTitle: {
+    fontSize: 22,
     fontWeight: 'bold',
-    flex: 1,
-    textAlign: 'right',
+    color: colors.text,
+    fontFamily: 'System',
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingBottom: 20,
   },
-  edit: {
-    marginVertical: 40,
+  mealInstructions: {
+    fontSize: 16,
+    color: colors.text,
+    fontFamily: 'System',
+    paddingTop: 25,
+    paddingLeft: 20,
+    paddingRight: 20,
+    lineHeight: 22,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    flex: 1,
+    paddingLeft: 10,
+    paddingBottom: 5,
+  },
+  bullet: {
+    width: 10,
+    fontWeight: 'bold',
+  },
+  bulletText: {
+    flex: 1,
+  },
+  ingredient: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  quantity: {
+    fontSize: 16,
   },
 });
 
