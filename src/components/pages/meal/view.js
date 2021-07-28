@@ -26,12 +26,12 @@ const MealComponent = ({loading, mealData}) => {
           <ScrollView>
             <Image
               style={[styles.image, {height: 700 * ratio}]}
-              source={{uri: mealData?.image || ''}}
+              source={mealData?.image ? {uri: mealData?.image} : null}
             />
             <Text style={styles.mealTitle}>{mealData?.name}</Text>
             <View style={styles.listIngredients}>
               {mealData?.ingredients.map((ingredient, index) => (
-                <View style={styles.row}>
+                <View style={styles.row} key={index}>
                   <View style={styles.bullet}>
                     <Text>{'\u2022' + ' '}</Text>
                   </View>
