@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {Actions} from 'react-native-router-flux';
-import * as categoriesctions from '../../../redux/categories/actions';
+import * as categoriesactions from '../../../redux/categories/actions';
 import HomeView from './view';
 
 const Home = () => {
@@ -9,12 +9,12 @@ const Home = () => {
   const {list, loading} = useSelector(state => state.categories);
 
   const initList = useCallback(
-    () => dispatch(categoriesctions.getList()),
+    () => dispatch(categoriesactions.getList()),
     [dispatch],
   );
 
   const setItem = useCallback(
-    value => dispatch(categoriesctions.setItem(value)),
+    value => dispatch(categoriesactions.setItem(value)),
     [dispatch],
   );
 

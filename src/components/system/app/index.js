@@ -6,6 +6,7 @@ import HomeComponent from '../../pages/home';
 import Meals from '../../pages/meals';
 import Meal from '../../pages/meal';
 import SearchComponent from '../../pages/search';
+import SearchResult from '../../pages/SearchResult';
 import colors from '../../../assets/colors';
 import store from '../../../config/redux';
 import TabIcon from '../../moleculas/tabIcon/tabIcon';
@@ -72,6 +73,11 @@ class App extends Component {
                     component={SearchComponent}
                     hideNavBar
                     initial
+                  />
+                  <Scene
+                    key="SearchResult"
+                    component={SearchResult}
+                    {...navBarProps}
                   />
                 </Stack>
               </Tabs>

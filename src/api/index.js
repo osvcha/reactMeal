@@ -20,3 +20,8 @@ export const getMeal = params => {
   const url = '/lookup.php';
   return aInstance.get(url, {params: params});
 };
+
+export const getAreas = () => {
+  const url = '/list.php?a=list';
+  return aInstance.get(url);
+};
