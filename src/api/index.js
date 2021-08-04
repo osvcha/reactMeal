@@ -25,3 +25,8 @@ export const getAreas = () => {
   const url = '/list.php?a=list';
   return aInstance.get(url);
 };
+
+export const getIngredients = () => {
+  const url = '/list.php?i=list';
+  return aInstance.get(url);
+};
