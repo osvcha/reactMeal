@@ -8,9 +8,15 @@ const Search = () => {
   const dispatch = useDispatch();
 
   const areas = useSelector(state => state.search.areas);
+  const ingredients = useSelector(state => state.search.ingredients);
 
   const initAreas = useCallback(
     () => dispatch(searchActions.getAreas()),
+    [dispatch],
+  );
+
+  const initIngredients = useCallback(
+    () => dispatch(searchActions.getIngredients()),
     [dispatch],
   );
 
@@ -31,9 +37,16 @@ const Search = () => {
 
   useEffect(() => {
     initAreas();
-  }, [initAreas]);
+    initIngredients();
+  }, [initAreas, initIngredients]);
 
-  return <SearchView areas={areas} onAreaSubmit={onAreaSubmit} />;
+  return (
+    <SearchView
+      areas={areas}
+      ingredients={ingredients}
+      onAreaSubmit={onAreaSubmit}
+    />
+  );
 };
 
 export default Search;

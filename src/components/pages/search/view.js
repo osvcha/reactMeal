@@ -5,15 +5,15 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SelectDropdown from 'react-native-select-dropdown';
 import styles from './styles';
 
-const SearchComponent = ({areas = [], onAreaSubmit}) => {
+const SearchComponent = ({areas = [], ingredients = [], onAreaSubmit}) => {
   const [area, setArea] = useState('');
+  //const [ingredient, setIngredient] = useState('');
   const [errors, setErrors] = useState({});
 
   const validateAreaForm = useCallback(() => {
     let valid = true;
     let newErrors = {};
-    console.log('validateAreaForm:');
-    console.log(area);
+
     if (!area) {
       newErrors.area = 'campo obligatorio';
       valid = false;
@@ -45,34 +45,65 @@ const SearchComponent = ({areas = [], onAreaSubmit}) => {
         <Text style={styles.pageSubtitle}>Search recipes</Text>
 
         <View style={styles.containerForm}>
-          <SelectDropdown
-            data={areas}
-            //defaultValueByIndex={1}
-            // defaultValue={'Egypt'}
-            onSelect={(selectedItem, index) => {
-              setArea(selectedItem);
-            }}
-            defaultButtonText={'Select area'}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              return item;
-            }}
-            buttonStyle={styles.dropdownBtnStyle}
-            buttonTextStyle={styles.dropdownBtnTxtStyle}
-            renderDropdownIcon={() => {
-              return (
-                <FontAwesome name="chevron-down" color={'#444'} size={18} />
-              );
-            }}
-            dropdownIconPosition={'right'}
-            dropdownStyle={styles.dropdownDropdownStyle}
-            rowStyle={styles.dropdownRowStyle}
-            rowTextStyle={styles.dropdownRowTxtStyle}
-          />
+          <View>
+            <SelectDropdown
+              data={areas}
+              //defaultValueByIndex={1}
+              // defaultValue={'Egypt'}
+              onSelect={(selectedItem, index) => {
+                setArea(selectedItem);
+              }}
+              defaultButtonText={'Select area'}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+              buttonStyle={styles.dropdownBtnStyle}
+              buttonTextStyle={styles.dropdownBtnTxtStyle}
+              renderDropdownIcon={() => {
+                return (
+                  <FontAwesome name="chevron-down" color={'#444'} size={18} />
+                );
+              }}
+              dropdownIconPosition={'right'}
+              dropdownStyle={styles.dropdownDropdownStyle}
+              rowStyle={styles.dropdownRowStyle}
+              rowTextStyle={styles.dropdownRowTxtStyle}
+            />
 
-          <Button title="Search by area" onPress={onSubmitAreaForm} />
+            <Button title="Search by area" onPress={onSubmitAreaForm} />
+          </View>
+
+          <View style={styles.ingredientsView}>
+            <SelectDropdown
+              data={ingredients}
+              onSelect={(selectedItem, index) => {
+                setArea(selectedItem);
+              }}
+              defaultButtonText={'Select ingredient'}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item;
+              }}
+              buttonStyle={styles.dropdownBtnStyle}
+              buttonTextStyle={styles.dropdownBtnTxtStyle}
+              renderDropdownIcon={() => {
+                return (
+                  <FontAwesome name="chevron-down" color={'#444'} size={18} />
+                );
+              }}
+              dropdownIconPosition={'right'}
+              dropdownStyle={styles.dropdownDropdownStyle}
+              rowStyle={styles.dropdownRowStyle}
+              rowTextStyle={styles.dropdownRowTxtStyle}
+            />
+
+            <Button title="Search by ingredient" onPress={onSubmitAreaForm} />
+          </View>
         </View>
       </SafeAreaView>
     </>

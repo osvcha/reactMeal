@@ -13,6 +13,17 @@ export const setAreas = (areas = []) => {
   };
 };
 
+export const setIngredients = (ingredients = []) => {
+  var ingredientsData = [];
+  ingredients.map(ingredient => {
+    ingredientsData.push(ingredient.strIngredient);
+  });
+  return {
+    type: types.UPDATE_SEARCH_INGREDIENTS,
+    payload: {ingredientsData},
+  };
+};
+
 export const setSearch = formData => {
   const action = {
     type: types.UPDATE_SEARCH_FORMDATA,
@@ -33,6 +44,13 @@ export const setList = (list = []) => ({
   payload: {list},
 });
 
+export const setItem = item => {
+  return {
+    type: types.UPDATE_SEARCH_ITEM,
+    payload: {item},
+  };
+};
+
 export const getAreas = () => {
   return async (dispatch, getState) => {
     try {
@@ -42,6 +60,20 @@ export const getAreas = () => {
       dispatch(setAreas(areas));
     } catch (e) {
       Alert.alert('Error', e.message || 'Error retrieving areas');
+    } finally {
+    }
+  };
+};
+
+export const getIngredients = () => {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(setIngredients([]));
+      const getIngredientsResult = await api.getIngredients();
+      const ingredients = getIngredientsResult.data?.meals || [];
+      dispatch(setIngredients(ingredients));
+    } catch (e) {
+      Alert.alert('Error', e.message || 'Error retrieving ingredients');
     } finally {
     }
   };

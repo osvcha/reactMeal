@@ -41,6 +41,7 @@ class App extends Component {
                 key="tabbar"
                 routeName="tabbar"
                 showLabel={false}
+                tabBarPosition="bottom"
                 tabBarStyle={styles.tabBarStyle}>
                 <Stack
                   key="tab_1"
@@ -79,6 +80,7 @@ class App extends Component {
                     component={SearchResult}
                     {...navBarProps}
                   />
+                  <Scene key="MealSearch" component={Meal} {...navBarProps} />
                 </Stack>
               </Tabs>
             </Scene>

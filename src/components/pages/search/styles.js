@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
     borderBottomColor: '#C5C5C5',
   },
   dropdownRowTxtStyle: {color: '#444', textAlign: 'left'},
+  ingredientsView: {
+    paddingTop: 40,
+  },
 });
 
 export default styles;
